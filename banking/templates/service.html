@@ -1,0 +1,175 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+<div class="container center" >
+<form  method="post" id="indexForm">
+    {% csrf_token %}
+    <br>
+    <br>
+    <label >Enter your name :</label>
+    <input type="text" name="name" placeholder="Enter your name"><br><br>
+    <label >Email :</label>
+    <input type="email" name="email" placeholder="Enter your email"><br><br>
+    <label >Enter your DOB :</label>
+    <input type="date" name="date_of_birth" placeholder="Enter your DOB"><br><br>
+    <label >Address  :</label>
+    <input type="text" name="address" placeholder="Enter your address"><br><br>
+    <label >enter your mobile no:</label>
+    <input type="number" name="mobile" placeholder="Enter your phone number"><br><br>
+
+<!--    <label for="district">Choose your District :</label>-->
+<!--    <select id="district" name="district">-->
+<!--        <option value="Kozhikode">KOZHIKODE</option>-->
+<!--        <option value="Waynaad">WAYNAAD</option>-->
+<!--        <option value="Kannur">Kannur</option>-->
+<!--        <option value="Palakkad">Pallakad</option>-->
+<!--        <option value="Ernakulam">ERNAKULAM</option>-->
+<!--        <option value="Trivandrum">Trivandrum</option>-->
+<!--        <option value="Alleppy">ALLEPPY</option>-->
+<!--        <option value="Kottayam">KOTTAYAM</option>-->
+<!--        <option value="Thrissur">THRISSUR</option>-->
+<!--    </select><br><br>-->
+
+<!--    <label for="branch">Choose your Branch :</label>-->
+<!--    <select id="branch" name="branch">-->
+
+<!--    <select class="form-control district selectFilter" data-target="branches">-->
+
+<!--            <option value="-1" >-&#45;&#45;select district-&#45;&#45;</option>-->
+<!--    <option data-ref="clt">KOZHIKODE</option>-->
+<!--    <option data-ref="way">WAYNAAD</option>-->
+<!--    <option data-ref="kan">KANNUR</option>-->
+<!--    <option data-ref="pal">PALLAKKAD</option>-->
+<!--    <option data-ref="ern">ERNAKULAM</option>-->
+<!--    <option data-ref="tvm">TRIVANDRUM</option>-->
+<!--    <option data-ref="alp">ALLEPPY</option>-->
+<!--    <option data-ref="ktm">KOTTAYAM</option>-->
+<!--    </select>-->
+
+<!--    <label>BRANCHES</label>-->
+<!--    <select class="form-control branches selectFilter">-->
+<!--        <option value="-1">&#45;&#45;branch&#45;&#45;</option>-->
+<!--        <option data-belong="clt">VELLIMADUKUNNU</option>-->
+<!--        <option data-belong="clt">MALAPARAMB</option>-->
+<!--        <option data-belong="way">BATTERY</option>-->
+<!--        <option data-belong="way">VYTHIRI</option>-->
+<!--        <option data-belong="kan">CHOVA</option>-->
+<!--        <option data-belong="kan">EZHUMALA</option>-->
+<!--        <option data-belong="pal">ATTAPADI</option>-->
+<!--        <option data-belong="pal">SILENTVALLY</option>-->
+<!--        <option data-belong="ern">KOCHI</option>-->
+<!--        <option data-belong="ern">VYTTILA</option>-->
+<!--        <option data-belong="tvm">TOWN</option>-->
+<!--        <option data-belong="tvm">SHAKUMUKKAM</option>-->
+<!--        <option data-belong="alp">ARIPPAD</option>-->
+<!--        <option data-belong="alp">BEACH</option>-->
+<!--        <option data-belong="ktm">TOWN</option>-->
+<!--        <option data-belong="ktm">KOTTA</option>-->
+
+
+    <label >Choose your District:</label>
+    <select name="district" id="district" class="form-control">
+        <option selected disabled="true">--District--</option>
+    {% for i in result1 %}
+        <option value="{{i.id}}"> {{i.district}}</option>
+        {% endfor %}
+    </select><br><br>
+    <label >Choose your Branch:</label>
+    <select name="branches" id="branches" class="form-control">
+        <option selected disabled="true" >--branch--</option>
+    {% for i in result2 %}
+        <option value="{{i.id}}">{{i.branch}}</option>
+        {% endfor %}
+    </select>
+    <br>
+
+
+<!--  <br><br>-->
+<!--  Topics: <select name="topic" id="topic">-->
+<!--    <option value="KOZHIKODE" selected="KOZHIKODE">6</option>-->
+<!--   <option value="KOZHIKODE" selected="KOZHIKODE">2</option>-->
+<!--       <option value="B" selected="WAYNAAD">3</option>-->
+<!--             <option value="C" selected="THIRSSUE">4</option>-->
+<!--        </select>-->
+<!--  <br><br>-->
+<!--  Chapters: <select name="chapter" id="chapter">-->
+<!--    <option value="" selected="selected">Please select topic first</option>-->
+<!--  </select>-->
+<!--  <br><br>-->
+
+
+
+
+
+<!--        <optgroup label="Kozhikode">-->
+<!--            <option value="vellimadukunnu">Vellimadukunnu</option>-->
+<!--        <option value="malaparamb">malaparamb</option>-->
+<!--        </optgroup>-->
+<!--        <optgroup label="Waynaad">-->
+<!--            <option value="Bathery">KOZHIKODE</option>-->
+<!--        <option value="Vythiri">WAYNAAD</option>-->
+<!--        </optgroup>-->
+<!--        <optgroup labelvalue="Kannur">-->
+<!--            <option value="thazhe">Thazhe chova</option>-->
+<!--        <option value="mele">mele chova</option>-->
+<!--        </optgroup>-->
+
+
+<!--        <optgroup label="Palakkad">-->
+<!--            <option value="slientvalley">silent valley</option>-->
+<!--        <option value="marakkad">Manarrkkad</option>-->
+<!--        </optgroup>-->
+<!--        <optgroup label="Ernakulam">-->
+<!--            <option value="kochi">Kochi</option>-->
+<!--        <option value="vyttila">vyttila</option>-->
+<!--        </optgroup>-->
+<!--        <optgroup label="Trivandrum">-->
+<!--            <option value="town">town</option>-->
+<!--        <option value="palayam">palayam</option>-->
+<!--        </optgroup>-->
+<!--        <optgroup label="Alleppy">-->
+<!--            <option value="allepy">alley town</option>-->
+<!--        <option value="beach">beach</option>-->
+<!--        </optgroup>-->
+<!--        <optgroup label="Kottayam">-->
+<!--            <option value="Kottayam">town</option>-->
+<!--        <option value="kaattu">kattu</option>-->
+<!--        </optgroup>-->
+<!--        <optgroup label="Thrissur">-->
+<!--            <option value="guruayur">Guruvayur</option>-->
+<!--        <option value="circle">circle</option>-->
+<!--        </optgroup>-->
+<!--    </select><br>-->
+    <br>
+<div class="container">
+    <label for="account_type">Account type :</label>
+    <select id="account_type" name="account_type">
+        <option value="Savings">Savings</option>
+        <option value="Current">Current</option>
+        <option value="NRI">NRI</option>
+    </select><br><br>
+    <label>Services Required : </label>
+    <div class="form-check form-check-inline">
+  <input class="form-check-input" type="checkbox" id="service_required1" value="option1">
+  <label class="form-check-label" for="service_required1">Cheque</label>
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="checkbox" id="service_required2" value="option2">
+  <label class="form-check-label" for="service_required2">Netbanking</label>
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="checkbox" id="service_required3" value="option3">
+  <label class="form-check-label" for="service_required3">Passbook</label>
+</div>
+<br>
+    <a href='/done' class="btn btn-primary" type="submit">Submit form</a>
+
+</div>
+
+
+</form>
+</div>
+
+{% endblock %}

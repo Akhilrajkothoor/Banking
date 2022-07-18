@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container center-center">
+
+<form action="" method="post">
+    {% csrf_token %}
+    <label >Username <t></t>  :</label>
+    <input type="text" name="username" placeholder="Enter your Username"><br><br>
+    <label >First name :</label>
+    <input type="text" name="first_name" placeholder="Enter your firstname"><br><br>
+    <label >Last name  :</label>
+    <input type="text" name="last_name" placeholder="Enter your lastname"><br><br>
+    <label >Email id   :</label>
+    <input type="email" name="email" placeholder="Enter your email"><br><br>
+    <label >Password   :</label>
+    <input type="password" name="password" placeholder="Enter your password"><br><br>
+    <label >Confirm    :</label>
+    <input type="password" name="password1" placeholder="re enter password"><br><br>
+
+    <input type="submit">
+</form>
+
+{% for msg in messages %}
+<h2>{{msg}}</h2>
+{% endfor %}
+</div>
+{% endblock %}

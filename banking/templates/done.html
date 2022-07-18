@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+<form method="POST">
+    {% csrf_token %}
+    you have successfull submitted
+    <a class="btn btn-primary" href="/">OK </a>
+
+</form>
+{% endblock %}

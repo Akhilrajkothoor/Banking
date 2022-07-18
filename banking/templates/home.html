@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+<body>
+<div class=container">
+    <div class="card">
+        <div class="card-header">
+            Member Form
+
+        </div>
+        <div class="card-body">
+            <form method="post" id="MemberForm" data-branchs-url="{% url 'ajax_load_branchs' %}" class="form-horizontal" role="form">
+                {% csrf_token %}
+                {{form.as_p}}
+                <a href='/done' class="btn btn-primary" ><input  class="btn btn-primary" type="submit"></a>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+<script>
+    $("#id_district").change(function() {
+         const url =$("#MemberForm").attr("data-branchs-url");
+         const districtId= $(this).val();
+
+                    $.ajax({
+                        url:url,
+                        data:{
+                        'district_id':districtId
+                        },
+                        success:function(data){
+                        $('#id_branch').html(data);
+                    }
+                    });
+                    });
+
+                </script>
+
+</body>
+
+{% endblock %}
